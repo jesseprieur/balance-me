@@ -3,19 +3,19 @@
 Checkboxes track progress. See `specs.md` for feature detail, `readme.md` for architecture/usage once written.
 
 ## 0. Project scaffolding
-- [ ] `docker-compose.yml` with `app` (Flask) and `db` (MySQL 8) services
-- [ ] `Dockerfile` for the Flask app
-- [ ] `requirements.txt` (Flask, PyMySQL or mysqlclient, werkzeug for password hashing)
-- [ ] Basic Flask app factory (`app/__init__.py`) with config loaded from env vars (DB host/user/pass/name, secret key)
-- [ ] `.env.example` documenting required env vars
-- [ ] `.gitignore` (venv, `__pycache__`, `.env`, etc.)
+- [x] `docker-compose.yml` with `app` (Flask) and `db` (MySQL 8) services
+- [x] `Dockerfile` for the Flask app
+- [x] `requirements.txt` (Flask, PyMySQL or mysqlclient, werkzeug for password hashing)
+- [x] Basic Flask app factory (`app/__init__.py`) with config loaded from env vars (DB host/user/pass/name, secret key)
+- [x] `.env.example` documenting required env vars
+- [x] `.gitignore` (venv, `__pycache__`, `.env`, etc.)
 
 ## 1. Database schema
-- [ ] `users` table (id, email/username, password_hash, created_at)
-- [ ] `accounts` table (id, user_id, name, type, created_at)
-- [ ] `transactions` table (id, account_id, date, description, amount, category nullable, recurring_rule_id nullable, created_at)
-- [ ] `recurring_rules` table (id, account_id, description, amount, interval, start_date, created_at)
-- [ ] SQL migration/init script run on container startup (or simple `schema.sql` mounted into MySQL init)
+- [x] `users` table (id, email/username, password_hash, created_at)
+- [x] `accounts` table (id, user_id, name, type, created_at)
+- [x] `transactions` table (id, account_id, date, description, amount, category nullable, recurring_rule_id nullable, created_at)
+- [x] `recurring_rules` table (id, account_id, description, amount, interval, start_date, created_at)
+- [x] SQL migration/init script run on container startup (or simple `schema.sql` mounted into MySQL init)
 
 ## 2. Auth
 - [ ] Login route (GET form + POST verify) using session cookie

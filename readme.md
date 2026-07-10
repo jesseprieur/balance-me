@@ -74,6 +74,14 @@ Then visit `http://localhost:5000` (port TBD in `docker-compose.yml`), log in wi
 - Balance shown for "Chase Checking": `700.00`.
 - Create recurring rule: "Rent", `-1800.00`, `monthly`, starting `2026-08-01` → generates 6 future rent transactions through `2027-01-01`.
 
+## Development
+
+```bash
+python3 -m venv .venv && source .venv/bin/activate
+pip install -r requirements-dev.txt
+pytest
+```
+
 ## Status
 
-Pre-implementation. See [implementation_plan.md](implementation_plan.md) for the current checklist and [specs.md](specs.md) for what's in/out of scope for v1.
+Scaffolding and DB schema in place (Flask app factory, Docker Compose, `db/schema.sql`). Auth, accounts, transactions, and recurring rules routes are still to be built. See [implementation_plan.md](implementation_plan.md) for the current checklist and [specs.md](specs.md) for what's in/out of scope for v1.
