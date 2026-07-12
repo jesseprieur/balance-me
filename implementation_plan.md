@@ -1,6 +1,6 @@
 # balance-me — Implementation Plan
 
-Checkboxes track progress. See `specs.md` for feature detail, `readme.md` for architecture/usage once written.
+Checkboxes track progress. See `specs.md` for feature detail, `README.md` for architecture/usage once written.
 
 ## 0. Project scaffolding
 - [x] `docker-compose.yml` with `app` (Flask) and `db` (MySQL 8) services
@@ -18,10 +18,10 @@ Checkboxes track progress. See `specs.md` for feature detail, `readme.md` for ar
 - [x] SQL migration/init script run on container startup (or simple `schema.sql` mounted into MySQL init)
 
 ## 2. Auth
-- [ ] Login route (GET form + POST verify) using session cookie
-- [ ] Logout route
-- [ ] `login_required` decorator applied to all app routes
-- [ ] Seed script or first-run flow to create the initial user (since there's no self-serve signup yet)
+- [x] Login route (GET form + POST verify) using session cookie
+- [x] Logout route
+- [x] `login_required` decorator applied to all app routes
+- [x] Seed script or first-run flow to create the initial user (since there's no self-serve signup yet)
 
 ## 3. Accounts
 - [ ] List accounts view (name, type, derived balance)

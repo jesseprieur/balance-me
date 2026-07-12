@@ -39,7 +39,7 @@ balance-me/
 ├── .env.example
 ├── specs.md               # feature specs
 ├── implementation_plan.md # task checklist
-└── readme.md               # this file
+└── README.md               # this file
 ```
 
 (Structure will firm up as implementation proceeds — see `implementation_plan.md`.)
@@ -60,7 +60,13 @@ cp .env.example .env   # fill in DB credentials, Flask secret key
 docker compose up --build
 ```
 
-Then visit `http://localhost:5000` (port TBD in `docker-compose.yml`), log in with the seeded user, and:
+There's no self-serve signup, so create the initial user via the `seed-user` CLI command, run inside the `app` container:
+
+```bash
+docker compose exec app flask seed-user you@example.com your-password
+```
+
+Then visit `http://localhost:5000` (port TBD in `docker-compose.yml`), log in with that user, and:
 
 1. Create an account (checking or credit card).
 2. Add transactions to it — balance updates automatically.
@@ -84,4 +90,4 @@ pytest
 
 ## Status
 
-Scaffolding and DB schema in place (Flask app factory, Docker Compose, `db/schema.sql`). Auth, accounts, transactions, and recurring rules routes are still to be built. See [implementation_plan.md](implementation_plan.md) for the current checklist and [specs.md](specs.md) for what's in/out of scope for v1.
+Scaffolding, DB schema, and auth are in place (Flask app factory, Docker Compose, `db/schema.sql`, session-based login/logout, `login_required`). Create the initial user with `flask seed-user <email> <password>` inside the `app` container. Accounts, transactions, and recurring rules routes are still to be built. See [implementation_plan.md](implementation_plan.md) for the current checklist and [specs.md](specs.md) for what's in/out of scope for v1.
