@@ -1,7 +1,7 @@
 import os
 
 import click
-from flask import Flask, render_template
+from flask import Flask, redirect, url_for
 
 from app import db as db_module
 from app.auth import login_required
@@ -25,8 +25,10 @@ def create_app(config_overrides=None):
     db_module.init_app(app)
 
     from app.routes.auth import bp as auth_bp
+    from app.routes.accounts import bp as accounts_bp
 
     app.register_blueprint(auth_bp)
+    app.register_blueprint(accounts_bp)
 
     @app.get("/healthz")
     def healthz():
@@ -35,7 +37,7 @@ def create_app(config_overrides=None):
     @app.get("/")
     @login_required
     def index():
-        return render_template("index.html")
+        return redirect(url_for("accounts.list_accounts"))
 
     @app.cli.command("seed-user")
     @click.argument("email")

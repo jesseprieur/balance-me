@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>{{ "Edit account" if account else "New account" }}</h1>
+<form method="post">
+  <div class="mb-3">
+    <label class="form-label" for="name">Name</label>
+    <input class="form-control" type="text" id="name" name="name" value="{{ account.name if account else '' }}" required>
+  </div>
+  <div class="mb-3">
+    <label class="form-label" for="type">Type</label>
+    <select class="form-select" id="type" name="type" required>
+      {% for t in account_types %}
+      <option value="{{ t }}" {% if account and account.type == t %}selected{% endif %}>{{ t }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  {% if not account %}
+  <div class="mb-3">
+    <label class="form-label" for="starting_balance">Starting balance</label>
+    <input class="form-control" type="number" step="0.01" id="starting_balance" name="starting_balance" value="0">
+  </div>
+  {% endif %}
+  <button class="btn btn-primary" type="submit">Save</button>
+  <a class="btn btn-link" href="{{ url_for('accounts.list_accounts') }}">Cancel</a>
+</form>
+{% endblock %}

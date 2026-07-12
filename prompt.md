@@ -1,4 +1,4 @@
-1. Study spec.md thoroughly
+1. Study spec.md thoroughly.
 2. Study implementation_plan.md thoroughly
 3. Pick the highest leverage unchecked task
 4. Complete the task

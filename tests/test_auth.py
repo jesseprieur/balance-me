@@ -82,7 +82,8 @@ def test_authenticated_user_can_access_index(mock_get_user_by_email, mock_get_us
 
     response = client.get("/")
 
-    assert response.status_code == 200
+    assert response.status_code == 302
+    assert "/accounts" in response.headers["Location"]
 
 
 @patch("app.routes.auth.get_user_by_id")

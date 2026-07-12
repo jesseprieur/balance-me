@@ -47,7 +47,7 @@ balance-me/
 ## Data model (v1)
 
 - **User**: login credentials (hashed password).
-- **Account**: belongs to a user; `checking` or `credit_card`; balance = sum of its transactions.
+- **Account**: shared across all logged-in users (not owned by a single user); `checking` or `credit_card`; balance = sum of its transactions.
 - **Transaction**: belongs to an account; signed amount (positive = deposit, negative = withdrawal/charge); optional `category` field reserved for future use.
 - **RecurringRule**: belongs to an account; on creation, immediately generates 6 linked transaction rows at the given interval (`weekly` / `biweekly` / `monthly`).
 
@@ -90,4 +90,4 @@ pytest
 
 ## Status
 
-Scaffolding, DB schema, and auth are in place (Flask app factory, Docker Compose, `db/schema.sql`, session-based login/logout, `login_required`). Create the initial user with `flask seed-user <email> <password>` inside the `app` container. Accounts, transactions, and recurring rules routes are still to be built. See [implementation_plan.md](implementation_plan.md) for the current checklist and [specs.md](specs.md) for what's in/out of scope for v1.
+Scaffolding, DB schema, auth, and accounts are in place (Flask app factory, Docker Compose, `db/schema.sql`, session-based login/logout, `login_required`, account list/create/edit/delete with derived balances and starting-balance opening transactions). Create the initial user with `flask seed-user <email> <password>` inside the `app` container. Transactions and recurring rules routes are still to be built. See [implementation_plan.md](implementation_plan.md) for the current checklist and [specs.md](specs.md) for what's in/out of scope for v1.
