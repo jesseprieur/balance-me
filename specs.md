@@ -79,17 +79,6 @@ A credit card's due-date payment isn't a fixed amount like a normal recurring ru
 - No auto-generation of more recurring instances beyond the initial 6 (i.e. no scheduled job that tops them back up over time — that's a future enhancement). This does not apply to credit card payoffs, which are inherently a rolling single-occurrence mechanism tracked on the account (see "Credit card payoff mechanics").
 - No true background job runner — the credit card due-date check happens opportunistically on request (e.g. dashboard load), not on a cron/scheduler.
 
-## Features (v1)
-
-1. **Auth**: login / logout, session-gated app.
-2. **Accounts**: create, list (with derived balance), edit, delete.
-   - Create form: name, type, optional starting balance (both types), and — only shown/used for `credit_card` — optional "first due date" (stored as the account's `next_due_date`).
-   - Deleting an account deletes its transactions (cascade).
-   - List view: running balance for a credit card only reflects transactions since its last payoff, not the un-due accrued balance, until a due date is reached and a payoff transaction is generated (see "Credit card payoff mechanics").
-3. **Transactions**: create, list (per account, most recent first), edit, delete.
-4. **Recurring rules**: create a rule (account, description, amount, interval, start date) → generates 6 transaction rows immediately. List/delete a rule (deleting a rule does not delete already-materialized transactions, only detaches them — sets `recurring_rule_id` to null — or leaves them; decide in implementation, default: leave transactions, just delete the rule).
-5. **Credit card payoff**: on each app request that touches the dashboard/account list, check any credit card accounts whose `next_due_date` has arrived; materialize the payoff transaction and advance `next_due_date` by a month (see "Credit card payoff mechanics").
-
 ## Out of scope until explicitly revisited
 
 Anything not listed above (reports, imports, transfers, per-user data ownership/authorization, category management, recurring auto-refill).

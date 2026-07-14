@@ -25,7 +25,7 @@ Checkboxes track progress. See `specs.md` for feature detail, `README.md` for ar
 - [x] Seed script or first-run flow to create the initial user (since there's no self-serve signup yet)
 
 ## 3. Accounts
-- [x] List accounts view (name, type, cash +/-, credit +/-, running balance)
+- [ ] List accounts view (name, type, cash +/-, credit +/-, running balance)
   - [ ] Running balance should only take into account cash +/- *until* credit card is due
 - [x] Create account form + route, 
   - [ ] If choosing checking, including optional "starting balance" field that inserts an "Opening Balance" `Transaction` row on submit (no schema change — see specs.md)
